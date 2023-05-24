@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Body Performance Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="age" placeholder="Age" required="required" />
+		  <input type="text" name="height_cm" placeholder="Height" required="required" />
+		  <input type="text" name="weight_kg" placeholder="Weight" required="required" />
+      <input type="text" name="body fat_%" placeholder="BodyFat" required="required" />
+      <input type="text" name="diastolic" placeholder="diastolic" required="required" />
+      <input type="text" name="systolic" placeholder="systolic" required="required" />
+      <input type="text" name="gripForce" placeholder="gripForce" required="required" />
+      <input type="text" name="sit and bend forward_cm" placeholder="sit and bend forward_cm" required="required" />
+      <input type="text" name="sit-up counts" placeholder="sit-ups counts" required="required" />
+      <input type="text" name="broad jump_cm" placeholder="broad jump_cm" required="required" />
+      <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
