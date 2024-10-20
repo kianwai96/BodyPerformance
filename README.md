@@ -32,3 +32,5 @@ sit-ups counts
 broad jump_cm
 
 class : A,B,C,D ( A: best) / stratified
+
+The best performing model is exported and deployed as a Flask web application hosted on website which allow user to enter input and obtain body performance prediction https://wong21570.pythonanywhere.com/
