@@ -1,42 +1,86 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Performance Prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Arimo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
 </head>
 
 <body>
- <div class="login">
-	<h1>Body Performance Prediction</h1>
+    <div class="login">
+        <h1>Body Performance Prediction</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="age" placeholder="Age" required="required" />
-		  <input type="text" name="height_cm" placeholder="Height" required="required" />
-		  <input type="text" name="weight_kg" placeholder="Weight" required="required" />
-      <input type="text" name="body fat_%" placeholder="BodyFat" required="required" />
-      <input type="text" name="diastolic" placeholder="diastolic" required="required" />
-      <input type="text" name="systolic" placeholder="systolic" required="required" />
-      <input type="text" name="gripForce" placeholder="gripForce" required="required" />
-      <input type="text" name="sit and bend forward_cm" placeholder="sit and bend forward_cm" required="required" />
-      <input type="text" name="sit-up counts" placeholder="sit-ups counts" required="required" />
-      <input type="text" name="broad jump_cm" placeholder="broad jump_cm" required="required" />
-      <br>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="age" placeholder="Age" required />
+            <input type="text" name="height_cm" placeholder="Height (cm)" required />
+            <input type="text" name="weight_kg" placeholder="Weight (kg)" required />
+            <input type="text" name="body fat_%" placeholder="Body Fat (%)" required />
+            <input type="text" name="diastolic" placeholder="Diastolic" required />
+            <input type="text" name="systolic" placeholder="Systolic" required />
+            <input type="text" name="gripForce" placeholder="Grip Force" required />
+            <input type="text" name="sit and bend forward_cm" placeholder="Sit and Bend Forward (cm)" required />
+            <input type="text" name="sit-up counts" placeholder="Sit-ups Count" required />
+            <input type="text" name="broad jump_cm" placeholder="Broad Jump (cm)" required />
+            <br>
+            <button type="submit">Predict</button>
+        </form>
 
-   <br>
-   <br>
-   {{ prediction_text }}
-
- </div>
-
-
+        <div class="prediction">{{ prediction_text }}</div>
+    </div>
 </body>
 </html>
